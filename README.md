@@ -26,3 +26,7 @@ const ensureQuestion = (s) => s.charAt(s.length - 1) === '?' ? s : `${s}?`;
 ```
 const ensureQuestion = (s) => s[s.length - 1] === '?' ? s : `${s}?`;
 ```
+
+```
+const ensureQuestion = (s) => s.endsWith('?') ? s : `${s}?`;
+```
