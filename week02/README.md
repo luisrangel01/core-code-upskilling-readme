@@ -270,3 +270,56 @@ class WishlistForm extends React.Component {
   }
 }
 ```
+
+``` jsx
+const React = require("react");
+
+class WishlistForm extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      name:'',
+      wish:'',
+      priority:1
+    }
+    
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+  
+  handleChange(event) {
+    this.setState({priority: event.target.value});
+  }
+   
+  handleSubmit(event) {
+    this.props.send(this.state)
+    event.preventDefault();
+  }
+
+  render() {
+    return (
+      <form onSubmit={this.handleSubmit}>
+      <label>Nombre:
+        <input id="name" value={this.state.name} onChange={e => this.setState({name: e.target.value})} />
+      </label>
+  
+      <label>Wish:
+        <textarea id="wish" value={this.state.wish} onChange={e => this.setState({wish: e.target.value})} />
+      </label>
+
+      <label>
+          Priority:
+          <select id='priority' value={this.state.priority} onChange={this.handleChange}>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </select>
+        </label>
+       
+      </form>
+    );
+  }
+};
+```
